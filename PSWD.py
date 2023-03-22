@@ -62,4 +62,93 @@ if Start_Input == "S" or Start_Input == "s":
 
 else:
     print("Thankyou for visiting ")
-    # if you dont want to signup in it
+    # if you dont want to signup in i
+# required length of password needed
+def PSWD(MAX_LEN):
+          
+
+    # declare arrays of the character that we need in out password
+    # Represented as chars to enable easy string concatenation
+    DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] 
+
+    LOCASE_CHARACTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+                         'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q',
+                         'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
+                         'z']
+ 
+    UPCASE_CHARACTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                         'I', 'J', 'K', 'M', 'N', 'O', 'P', 'Q',
+                         'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
+                         'Z']
+ 
+    SYMBOLS = ['@', '#', '$', '%', '=', ':', '?', '.', '/', '|', '~', '>',
+               '*', '(', ')', '<']
+
+    # the minimum length required to produce code is 4 
+    if MAX_LEN >= 4:
+    # combines all the character arrays above to form one array
+        COMBINED_LIST = DIGITS + UPCASE_CHARACTERS + LOCASE_CHARACTERS + SYMBOLS
+ 
+    # randomly select at least one character from each character set above
+        rand_digit = random.choice(DIGITS)
+        rand_upper = random.choice(UPCASE_CHARACTERS)
+        rand_lower = random.choice(LOCASE_CHARACTERS)
+        rand_symbol = random.choice(SYMBOLS)
+ 
+    # combine the character randomly selected above
+    # at this stage, the password contains only 4 characters
+        temp_pass = rand_digit + rand_upper + rand_lower + rand_symbol
+ 
+ 
+    # now that we are sure we have at least one character from each
+    # set of characters, we fill the rest of the password length by selecting randomly from the combined
+    # list of character above.
+        for x in range(MAX_LEN - 4):
+            temp_pass = temp_pass + random.choice(COMBINED_LIST)
+ 
+        # convert temporary password into array and shuffle to
+        # prevent it from having a consistent pattern
+        # where the beginning of the password is predictable
+            temp_pass_list = array.array('u', temp_pass)
+            random.shuffle(temp_pass_list)
+ 
+    # traverse the temporary password array and append the chars
+    # to form the password
+        password = ""
+        for x in temp_pass_list:
+                password = password + x
+         
+    # print out password
+        print(password)
+    
+    #if the length of code is less than 4
+    else:
+        print('''The Minimum lenght of password should be 4 
+                Please try again      ''')
+
+#when you had taken input
+
+    while num == 1:
+        password_input= input("Create a strong Password :(To randomly generate password please type '1')")
+        # generated password to be inputed
+      
+        while password_input == '1':
+            # the condition if the user wants the random password 
+            MAX_LEN = int(input("Please Enter the Required Length of Password: "))
+            PSWD(MAX_LEN)
+
+            # this loop will create random password 
+            pswd_confirmation = int(input("Confirm this password type '1', New reccomendation type '2', manually enter type '3'"))
+
+
+        if (pswd_check(password_input) == False):
+            num = 1
+        
+        else:
+            num = 0
+  
+    print("Your account has been created succesfully")
+    # if the sign up is succesful with the required password 
+    print("Now you can signin in your",PORTAL.upper(),"using this login credentials")
+
+t
