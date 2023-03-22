@@ -131,24 +131,76 @@ def PSWD(MAX_LEN):
     while num == 1:
         password_input= input("Create a strong Password :(To randomly generate password please type '1')")
         # generated password to be inputed
-      
         while password_input == '1':
-            # the condition if the user wants the random password 
+            # the condition if the user wants the random passwor
             MAX_LEN = int(input("Please Enter the Required Length of Password: "))
             PSWD(MAX_LEN)
 
             # this loop will create random password 
             pswd_confirmation = int(input("Confirm this password type '1', New reccomendation type '2', manually enter type '3'"))
-
-
         if (pswd_check(password_input) == False):
             num = 1
-        
-        else:
+    
+        else
             num = 0
   
     print("Your account has been created succesfully")
-    # if the sign up is succesful with the required password 
+    # if the sign up is succesful with the required password
     print("Now you can signin in your",PORTAL.upper(),"using this login credentials")
 
-t
+# the function is to check whether the password met all the conditions or not ?
+# the verification is done by the already present function called (RE) Reading expressions
+def pswd_check(pswd):
+   specharlist = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+   # the list is for
+   #the special characters
+   alphalist = re.compile('[a-z]')
+   #this list is for
+   # the lowercase letter
+   Alphalist = re.compile('[A-Z]')
+   #this list is for
+   # the uppercase letter
+   numlist = re.compile('[0-9]')
+   # this list is for 
+   # the numbers  
+
+   # the if conditions further check that the 
+   #provided output either have the required input value or not
+   if(alphalist.search(pswd) == None):
+        print("The password need at least one lowercase alphabet to proceed")
+        return 0# if it doesn"t have the value it returns false
+   else:
+       pass
+
+   if(Alphalist.search(pswd) == None):
+        print("The password needs at least one uppercase letter to proceed")
+        return 0 
+   else:
+       pass # else it goes onto the next condition
+
+   if(numlist.search(pswd) == None):
+       print("The password needs atleast one number to proceed")
+       return 0
+   else:
+       pass
+
+   if(specharlist.search(pswd) == None):
+       print("The password needs atleast one special character to proceed")
+       return 0  
+   else:
+       pass
+
+   return 1 # if all the conditions are meant it returns true
+
+
+            if pswd_confirmation == 1:# if the random generated password is confirmed
+               print("Your account has been created succesfully")
+               # if the sign up is succesful with the required password 
+               print("Now you can signin in your",PORTAL.upper(),"using this login credentials")
+               exit()
+            if pswd_confirmation == 2:#if user want a new random generatewd password
+               continue
+            if pswd_confirmation == 3:# if they want to manually type the pasword
+               num = 1
+               break
+        
